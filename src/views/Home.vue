@@ -8,7 +8,7 @@
     <tr v-for="item in products" :key="item.code">
       <td>{{ item.code }}</td>
       <td>{{ item.name }}</td>
-      <td>{{ item.price | number_format}} <span v-if="item.price > 1000"> {{ p_hiMsg }} </span><span v-else>送料別</span> </td>
+      <td>{{ item.price | number_format | unit}} <span v-if="item.price > 1000"> {{ p_hiMsg }} </span><span v-else>送料別</span> </td>
     </tr>
   </table>
 
@@ -28,7 +28,7 @@ export default {
     msg: "HI",
     pSize: '20px',
     isActive: true,
-    p_hiMsg: '送料無料',
+    p_hiMsg: '送料込',
     products: [{
         code: 'A1',
         name: 'ItemA',
@@ -54,9 +54,17 @@ export default {
   components: {
     // HelloWorld
   },
+  methods: {
+    // HelloWorld
+  },
   filters: {
+    // 3桁表示
     number_format: function(val) {
       return val.toLocaleString();
+    },
+    // 単位
+    unit: function(val) {
+      return val + '円'
     }
   }
 }
