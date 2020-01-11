@@ -8,7 +8,7 @@
     <tr v-for="item in products" :key="item.code">
       <td>{{ item.code }}</td>
       <td>{{ item.name }}</td>
-      <td>{{ item.price }} <span v-if="item.price > 1000"> {{ p_hiMsg }} </span><span v-else>送料別</span> </td>
+      <td>{{ item.price | number_format}} <span v-if="item.price > 1000"> {{ p_hiMsg }} </span><span v-else>送料別</span> </td>
     </tr>
   </table>
 
@@ -17,6 +17,11 @@
 
 <script>
 // import HelloWorld from '@/components/HelloWorld.vue'
+
+// Vue.filter('number_format', function(val) {
+//   return val.toLocalString();
+// });
+
 export default {
   name: 'home',
   data: () => ({
@@ -48,6 +53,11 @@ export default {
   }),
   components: {
     // HelloWorld
+  },
+  filters: {
+    number_format: function(val) {
+      return val.toLocaleString();
+    }
   }
 }
 </script>
