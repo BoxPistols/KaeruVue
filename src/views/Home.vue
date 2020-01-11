@@ -2,6 +2,13 @@
 <div class="home">
   <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+
+  <div class="researchYear">
+    <p v-bind:class="{active: isUry}">調べたい：</p>
+    <p><input type="text" v-model="year"></p>
+    <p v-bind:class="{active: isUry}">{{ year }}年は {{ isUry ? 'うるう年' : 'うるう違う' }}</p>
+  </div>
+
   <input type="text" v-bind:value="msg" v-bind:style="{fontSize: pSize}" v-bind:class="{active: isActive}">
 
   <table border="1">
@@ -29,6 +36,7 @@ export default {
     pSize: '20px',
     isActive: true,
     p_hiMsg: '送料込',
+    year: (new Date()).getFullYear(),
     products: [{
         code: 'A1',
         name: 'ItemA',
@@ -51,11 +59,15 @@ export default {
       },
     ]
   }),
-  components: {
-    // HelloWorld
-  },
-  methods: {
-    // HelloWorld
+  components: {},
+  computed: {
+    isUry: function() {
+      if ((this.year % 4 == 0) && (this.year % 100 != 0) || (this.year % 400 == 0)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   filters: {
     // 3桁表示
