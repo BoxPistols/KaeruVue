@@ -28,6 +28,11 @@ const routes = [
     name: 'hasEvent',
     component: () => import('../views/HasEvent.vue')
   },
+  {
+    path: '/resize',
+    name: 'resize',
+    component: () => import('../views/Resize.vue')
+  },
 ]
 
 const router = new VueRouter({
