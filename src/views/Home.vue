@@ -7,9 +7,7 @@
     <p><input type="text" v-model="year"></p>
     <p v-bind:class="{active: isUrudoshi}">{{ year }}年は {{ isUrudoshi ? 'うるう年' : 'うるう違う' }}</p>
   </div>
-
-  <input type="text" v-bind:value="msg" v-bind:style="{fontSize: pSize}" v-bind:class="{active: isActive}">
-
+  <!-- <input type="text" v-bind:value="msg" v-bind:style="{fontSize: pSize}" v-bind:class="{active: isActive}"> -->
   <table border="1">
     <tr v-for="item in products" :key="item.code">
       <td>{{ item.code }}</td>
@@ -18,7 +16,17 @@
     </tr>
     <tr>
       <td>
-        <p>{{ products.price }}</p>
+        <p>{{ products.length }}</p>
+      </td>
+      <td>
+        <!-- <p v-for="value in products" :key="value">{{ value.name.length }}</p> -->
+        <p>{{ dmyCalA.length + 2 }}</p>
+      </td>
+      <td>
+        <!-- <p>{{ products[0].price + products[1].price }}</p> -->
+        <!-- https://teratail.com/questions/200551 -->
+        <p>合計： {{ totalMoney('') }}</p>
+        <!-- <p>{{ this.products.length * 2}}</p> -->
       </td>
     </tr>
   </table>
@@ -62,6 +70,19 @@ export default {
         name: 'ItemD',
         price: 1600,
       },
+    ],
+    list: [{
+        moneyA: 1000,
+        moneyB: 4000
+      },
+      {
+        moneyA: 2000,
+        moneyB: 5000
+      },
+      {
+        moneyA: 3000,
+        moneyB: 6000
+      },
     ]
   }),
   components: {},
@@ -72,7 +93,30 @@ export default {
       } else {
         return false;
       }
-    }
+    },
+  },
+  methods: {
+    totalMoney(type) {
+      let sum = 0;
+      // for (const item of this.list) {
+      for (const item of this.products) {
+        if (type === 'A') {
+          sum += +item.moneyA;
+        } else if (type === 'B') {
+          sum += +item.moneyB;
+        } else {
+          sum += +item.price;
+        }
+      }
+      return sum;
+    },
+    dmyCalA: function() {
+      for (const calA of this.products) {
+        if (calA.name === 'ItemA') {
+          return calA
+        }
+      }
+    },
   },
   filters: {
     // 3桁表示
@@ -82,7 +126,7 @@ export default {
     // 単位
     unit: function(val) {
       return val + '円'
-    }
+    },
   }
 }
 </script>
