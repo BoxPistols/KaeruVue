@@ -2,11 +2,10 @@
 <div class="home">
   <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-
   <div class="researchYear">
-    <p v-bind:class="{active: isUry}">調べたい：</p>
+    <p v-bind:class="{active: isUrudoshi}">調べたい：</p>
     <p><input type="text" v-model="year"></p>
-    <p v-bind:class="{active: isUry}">{{ year }}年は {{ isUry ? 'うるう年' : 'うるう違う' }}</p>
+    <p v-bind:class="{active: isUrudoshi}">{{ year }}年は {{ isUrudoshi ? 'うるう年' : 'うるう違う' }}</p>
   </div>
 
   <input type="text" v-bind:value="msg" v-bind:style="{fontSize: pSize}" v-bind:class="{active: isActive}">
@@ -17,7 +16,13 @@
       <td>{{ item.name }}</td>
       <td>{{ item.price | number_format | unit}} <span v-if="item.price > 1000"> {{ p_hiMsg }} </span><span v-else>送料別</span> </td>
     </tr>
+    <tr>
+      <td>
+        <p>{{ products.price }}</p>
+      </td>
+    </tr>
   </table>
+
 
 </div>
 </template>
@@ -61,7 +66,7 @@ export default {
   }),
   components: {},
   computed: {
-    isUry: function() {
+    isUrudoshi: function() {
       if ((this.year % 4 == 0) && (this.year % 100 != 0) || (this.year % 400 == 0)) {
         return true;
       } else {
