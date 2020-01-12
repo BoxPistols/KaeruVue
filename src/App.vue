@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/computedBasic">ComputedBasic</router-link>
+      <router-link to="/computedBasic">ComputedBasic</router-link> |
+      <router-link to="/hasEvent">HasEvent</router-link>
     </div>
     <router-view/>
   </div>
@@ -17,4 +18,5 @@
   text-align center
   color #2c3e50
   margin-top 60px
+  font-size: 24px
 </style>

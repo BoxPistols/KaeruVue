@@ -22,7 +22,12 @@ const routes = [
     path: '/computedBasic',
     name: 'computedBasic',
     component: () => import('../views/ComputedBasic.vue')
-  }
+  },
+  {
+    path: '/hasEvent',
+    name: 'hasEvent',
+    component: () => import('../views/HasEvent.vue')
+  },
 ]
 
 const router = new VueRouter({
