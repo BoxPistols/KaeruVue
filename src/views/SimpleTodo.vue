@@ -18,17 +18,18 @@
       </select>
 
       <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button>
-
     </div>
+
     <ul>
       <li v-for="item in items" :key="item.index">
         <p>
           <label v-bind:class="{ done: item.isChecked }">
-            {{ item.title }} / {{ item.selItem }}  / {{ item.itemJob }}  <input type="checkbox" v-model="item.isChecked">
+            {{ item.title }} / {{ item.selItem }} / {{ item.itemJob }} <input type="checkbox" v-model="item.isChecked">
           </label>
         </p>
       </li>
     </ul>
+
     <button v-on:click="deleteTodo()">チェック済みの項目を削除する</button>
   </div>
 
@@ -85,17 +86,12 @@ export default {
       this.newItemSelect = 'DayWork'
       this.newItemJob = '4番サード'
     },
-    // addSel: function() {
-    //   this.items.push({
-    //     selItem: this.selItem,
-    //   });
-    // },
     deleteTodo: function() {
       this.items = this.items.filter(function(item) {
         return item.isChecked === false //チェックが付いていないものはスルーする
       });
     },
-  },
+  }
 }
 </script>
 
@@ -121,6 +117,6 @@ input, button, select
   background-color aliceblue
   border-radius: 6px
   padding 8px
- select
-   height 40px
+select
+ height 40px
 </style>
