@@ -12,10 +12,13 @@
     <tr v-for="item in products" :key="item.code">
       <td>{{ item.code }}</td>
       <td>{{ item.name }}</td>
-      <td>{{ item.price | number_format | unit}} <span v-if="item.price > 1000"> {{ p_hiMsg }} </span><span v-else>送料別</span>
+      <td>{{ item.price | number_format | unit}} <span v-if="item.price > 1000"> {{ p_hiMsg }} </span><span style="color: red;" v-else>送料別</span>
       </td>
+      <td>{{ item.send }}</td>
+      <td v-if="item.send > 0">{{ item.price + item.send }}</td>
     </tr>
     <tr class="fix">
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -68,22 +71,24 @@ export default {
     p_hiMsg: '送料込',
     year: (new Date()).getFullYear(),
     products: [{
-        code: 'A1',
+        code: '佐藤さん',
         name: 'ItemA',
         price: 300,
+        send: 500,
       },
       {
-        code: 'B1',
+        code: '鈴木さん',
         name: 'ItemB',
         price: 800,
+        send: 500,
       },
       {
-        code: 'C1',
+        code: '山田さん',
         name: 'ItemC',
         price: 1200,
       },
       {
-        code: 'D1',
+        code: 'Ms.Olive',
         name: 'ItemD',
         price: 1600,
       },
