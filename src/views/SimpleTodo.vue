@@ -2,14 +2,15 @@
 <div>
   <div id="todo">
     <div>
-      <button type="button" name="button" v-on:click="addTodo(newItemTitle)">追加</button>
-      <!-- <input type="text" placeholder="TODOを入力しましょう！" v-model="newItemTitle" v-on:keyup.enter="addTodo(newItemTitle)"></p> -->
+      <!-- v-on:keyup.enter="addTodo(newItemTitle) -->
       <input type="text" placeholder="TODOを入力しましょう！" v-model="newItemTitle">
 
-      <select v-on:change="addSel" v-model="selItem">
+      <select v-model="newItemSelect">
         <option value="1">1</option>
         <option value="2">2</option>
       </select>
+
+      <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect)">追加</button>
 
     </div>
     <ul>
@@ -51,21 +52,27 @@ export default {
       },
     ],
     newItemTitle: '', //追加
+    newItemSelect: '',
     active: false,
   }),
   methods: { //methodsオプションをまるっと追加
-    addTodo: function(newTitle) {
-      this.items.push({
-        title: newTitle,
-        isChecked: false
-      });
+    addTodo: function(newItemTitle, newItemSelect) {
+      if (this.newItemTitle.length < 1) {
+        return false
+      } else {
+        this.items.push({
+          title: newItemTitle,
+          selItem: newItemSelect,
+          isChecked: false,
+        });
+      }
       this.newItemTitle = ''
     },
-    addSel: function() {
-      this.items.push({
-        selItem: this.selItem,
-      });
-    },
+    // addSel: function() {
+    //   this.items.push({
+    //     selItem: this.selItem,
+    //   });
+    // },
     deleteTodo: function() {
       this.items = this.items.filter(function(item) {
         return item.isChecked === false //チェックが付いていないものはスルーする
