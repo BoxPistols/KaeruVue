@@ -5,7 +5,8 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/computedBasic">ComputedBasic</router-link> |
       <router-link to="/hasEvent">HasEvent</router-link> |
-      <router-link to="/resize">Resize</router-link>
+      <router-link to="/resize">Resize</router-link> |
+      <router-link to="/simpleTodo">simpleTodo</router-link>
     </div>
     <router-view/>
   </div>

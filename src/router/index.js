@@ -33,6 +33,11 @@ const routes = [
     name: 'resize',
     component: () => import('../views/Resize.vue')
   },
+  {
+    path: '/SimpleTodo',
+    name: 'SimpleTodo',
+    component: () => import('../views/SimpleTodo.vue')
+  },
 ]
 
 const router = new VueRouter({
