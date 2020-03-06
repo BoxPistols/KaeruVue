@@ -17,14 +17,37 @@
         <option value="5番ライト">5番ライト</option>
       </select>
 
-      <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob)">追加</button>
+      <select v-model="newItemDesign">
+        <option value="allDay"><span class="allDay">allDay</span></option>
+        <option value="halfDay">halfDay</option>
+        <option value="night">night</option>
+      </select>
+
+      <div v-class="newItemDesign"></div>
+
+      <span>{{ $data.newItemDesign}}</span>
+
+      <!-- <div class="poke" v-for="(poke, i) in pokes" :key="i">
+        <input
+          :id="'poke' + i"
+          type="checkbox"
+          :value="poke"
+          v-model="selectedPokes">
+        <label :for="'poke' + i">{{poke}}</label>
+      </div> -->
+
+      <button type="button" name="button" v-on:click="addTodo(newItemTitle, newItemSelect, newItemJob, newItemDesign, poke, selectedPokes)">追加</button>
+
+
     </div>
 
     <ul>
       <li v-for="item in items" :key="item.index">
         <p>
           <label v-bind:class="{ done: item.isChecked }">
-            {{ item.title }} / {{ item.selItem }} / {{ item.itemJob }} <input type="checkbox" v-model="item.isChecked">
+            <!-- {{ item.poke }} -->
+             <span class="design">[ {{ item.design }} ] </span>
+            {{ item.title }} / {{ item.selItem }} / {{ item.itemJob }}<input type="checkbox" v-model="item.isChecked">
           </label>
         </p>
       </li>
@@ -39,39 +62,46 @@
 <script>
 export default {
   data: () => ({
+    pokes: ["A", "B", "C"],
+    selectedPokes: [],
+    //allDay halfDay nigh halfNight
     items: [{
         title: '加藤よしのり',
         isChecked: false,
         selItem: "DayWork",
-        itemJob: "4番サード"
+        itemJob: "4番サード",
+        poke: "",
       },
       {
         title: '東海林未由来',
         isChecked: true,
         selItem: "NightWork",
-        itemJob: "2番セカンド"
+        itemJob: "2番セカンド",
+        poke: "",
       },
       {
         title: '山形昭二',
         isChecked: false,
         selItem: "ShortWork",
-        itemJob: "5番ライト"
+        itemJob: "5番ライト",
+        poke: "",
       },
       {
         title: '磯野正道',
         isChecked: false,
         selItem: "DayWork",
-        itemJob: "4番サード"
+        itemJob: "4番サード",
+        poke: "",
       },
     ],
     newItemTitle: '内野恋雪',
     newItemSelect: 'DayWork',
     newItemJob: '4番サード',
-
+    newItemDesign: 'allDay',
     active: false,
   }),
   methods: { //methodsオプションをまるっと追加
-    addTodo: function(newItemTitle, newItemSelect, newItemJob) {
+    addTodo: function(newItemTitle, newItemSelect, newItemJob, newItemDesign, selectedPokes) {
       if (this.newItemTitle.length < 1) {
         return false
       } else {
@@ -79,12 +109,18 @@ export default {
           title: newItemTitle,
           selItem: newItemSelect,
           itemJob: newItemJob,
+          design: newItemDesign,
+          // poke: selectedPokes,
           isChecked: false,
+        });
+        this.pokes.push({
+          poke: selectedPokes
         });
       }
       this.newItemTitle = '内野恋雪'
       this.newItemSelect = 'DayWork'
       this.newItemJob = '4番サード'
+      this.newItemDesign = 'allDay'
     },
     deleteTodo: function() {
       this.items = this.items.filter(function(item) {
@@ -97,8 +133,8 @@ export default {
 
 <style lang="stylus" scoped>
 #todo
-  max-width: 600px
-  margin: auto
+  max-width: 800px
+  margin: 20px auto
   text-align: left
   font-size 16px
 li
@@ -119,4 +155,10 @@ input, button, select
   padding 8px
 select
  height 40px
+.poke
+  display: inline-flex
+.allDay
+  background-color navy
+.design
+  background-color orange
 </style>
