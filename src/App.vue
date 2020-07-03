@@ -1,24 +1,37 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/computedBasic">ComputedBasic</router-link> |
-      <router-link to="/hasEvent">HasEvent</router-link> |
-      <router-link to="/resize">Resize</router-link> |
-      <router-link to="/simpleTodo">simpleTodo</router-link>
+      <router-link to="/">Home</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link to="/computedBasic">ComputedBasic</router-link>
+      <router-link to="/hasEvent">HasEvent</router-link>
+      <router-link to="/resize">Resize</router-link>
+      <router-link to="/simpleTodo">SimpleTodo</router-link>
+      <router-link to="/birthDay">BirthDay</router-link>
     </div>
-    <router-view/>
+    <div>
+      <router-view />
+    </div>
   </div>
 </template>
 
 <style lang="stylus">
 #app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-  font-size: 24px
+  font-family: 'Avenir', Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  //text-align: center;
+  color: #2c3e50
+  margin-top: 60px
+  font-size: 20px
+  display flex
+  justify-content center
+
+#nav
+  display flex
+  flex-direction column
+  justify-content start
+  margin-right 2vw
+  font-size 20px
+  line-height 2
 </style>

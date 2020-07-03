@@ -38,6 +38,11 @@ const routes = [
     name: 'SimpleTodo',
     component: () => import('../views/SimpleTodo.vue')
   },
+  {
+    path: '/BirthDay',
+    name: 'BirthDay',
+    component: () => import('../views/BirthDay.vue')
+  },
 ]
 
 const router = new VueRouter({
