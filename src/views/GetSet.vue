@@ -1,5 +1,6 @@
 <template>
   <div id="">
+    <h1>get / set</h1>
     <h2>消費税計算機</h2>
     <p>価格：
       <input type="number" v-model="price"></p>
@@ -11,6 +12,14 @@
     <p>今は<input type="number" v-model="nowYear">年</p>
     <p>平成なら{{ heisei }}年 <input type="number" v-model="heisei">年</p>
     <p>ちなみに令和なら: {{ reiwa }}年</p>
+
+    <hr>
+    <h1>v-show</h1>
+    <div>
+      <button @click="active = !active">Toggle</button>
+      <p><span v-show="active">Show is display</span></p>
+      <p><span v-if="active">Show is dom controll</span></p>
+    </div>
   </div>
 </template>
 
@@ -26,35 +35,36 @@ export default {
   name: "",
   data: () => ({
     price: 1000, // 初期化
-    nowYear: 2020
+    nowYear: 2020,
+    active: false
   }),
   computed: { // 計算
-    inTax: { // 定義
+  inTax: { // 定義
       get: function() {
-        return parseInt(this.price * 1.1)
-      },
+      return parseInt(this.price * 1.1)
+    },
       set: function(v) {
-        this.price = Math.ceil(v / 1.1)
-      }
-    },
-    onlyTax() {
-      return Math.ceil(this.price * 0.1)
-    },
-    heisei: {
-      get: function() {
-        return this.nowYear - 1988
-      },
-      set: function(v) {
-        this.nowYear = v + 1988
-      }
-    },
-    reiwa(){
-      if(this.nowYear >= 2018){
-        return this.nowYear - 2018
-      }else{
-        return null
-      }
+      this.price = Math.ceil(v / 1.1)
     }
+  },
+  onlyTax() {
+    return Math.ceil(this.price * 0.1)
+  },
+  heisei: {
+      get: function() {
+      return this.nowYear - 1988
+    },
+      set: function(v) {
+      this.nowYear = v + 1988
+    }
+  },
+  reiwa(){
+    if(this.nowYear >= 2018){
+      return this.nowYear - 2018
+    }else{
+      return null
+    }
+  }
   }
 }
 </script>
@@ -62,8 +72,13 @@ export default {
 <style lang="stylus" scoped="scoped">
 input
   font-size 24px
-.res
+h1
   font-size 32px
+  color orange
+h2
+  font-size 18px
+.res
+  font-size 20px
 color
   orange
 </style>
