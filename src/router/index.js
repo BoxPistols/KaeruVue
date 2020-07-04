@@ -43,6 +43,11 @@ const routes = [
     name: 'BirthDay',
     component: () => import('../views/BirthDay.vue')
   },
+  {
+    path: '/GetSet',
+    name: 'GetSet',
+    component: () => import('../views/GetSet.vue')
+  },
 ]
 
 const router = new VueRouter({

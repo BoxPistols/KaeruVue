@@ -8,30 +8,37 @@
       <router-link to="/resize">Resize</router-link>
       <router-link to="/simpleTodo">SimpleTodo</router-link>
       <router-link to="/birthDay">BirthDay</router-link>
+      <router-link to="/getSet">getSet</router-link>
     </div>
-    <div>
+    <div class="contents">
       <router-view />
     </div>
   </div>
 </template>
 
 <style lang="stylus">
+body
+  padding 2vw
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   //text-align: center;
   color: #2c3e50
-  margin-top: 60px
+  margin: 60px auto 0
   font-size: 20px
   display flex
   justify-content center
+  max-width 800px
 
 #nav
   display flex
   flex-direction column
-  justify-content start
   margin-right 2vw
   font-size 20px
   line-height 2
+  width 20vw
+
+.contents
+  width 80vw
 </style>
