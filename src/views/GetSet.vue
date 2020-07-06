@@ -1,5 +1,7 @@
 <template>
   <div id>
+    <p>{{ $data }}</p>
+    <p>{{ myData }}</p>
     <h1>Counter</h1>
     <button @click="counter += 1">Counter</button>
     <p>\{{ counter >= 5 ? '5以上' : '5未満' }\}</p>
@@ -87,6 +89,9 @@ export default {
   },
   //同期処理
   computed: { // 計算
+    myData(){
+      return this.$data
+    },
     moreThanThree: function() {
       return this.counter >= 5 ? '5以上' : '5未満'
     },
@@ -103,9 +108,9 @@ export default {
     },
     heisei: {
         get: function() {
-        return this.nowYear - 1988
+          return this.nowYear - 1988
       },
-        set: function(v) {
+      set: function(v) {
         this.nowYear = v + 1988
       }
     },
@@ -130,24 +135,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped="scoped">
-input {
-  font-size: 24px;
-}
-
-h1 {
-  font-size: 32px;
-  color: orange;
-}
-
-h2 {
-  font-size: 18px;
-}
-
-.res {
-  font-size: 20px;
-}
-
-color {
-  orange;
-}
+input
+  font-size 24px
+h1
+  font-size 32px
+  color orange
+h2
+  font-size 18px
+.res
+  font-size 20px
 </style>
