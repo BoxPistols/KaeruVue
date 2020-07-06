@@ -1,47 +1,59 @@
 <template>
-  <div id="">
-
+  <div id>
     <h1>Counter</h1>
     <button @click="counter += 1">Counter</button>
     <p>\{{ counter >= 5 ? '5以上' : '5未満' }\}</p>
-    <hr>
+    <hr />
     <p>課題： 計算式を直書きしてるので、これをComputedプロパティで表示する</p>
     <p>{{ counter }}</p>
     <p>{{ moreThanThree }}</p>
     <p>{{ counter }}</p>
-    <hr>
+    <hr />
 
     <h1>get / set</h1>
     <h2>消費税計算機</h2>
-    <p>価格：
-      <input type="number" v-model="price"></p>
-    <p>消費税込：<input type="number" v-model="inTax"></p>
+    <p>
+      価格：
+      <input type="number" v-model="price" />
+    </p>
+    <p>
+      消費税込：
+      <input type="number" v-model="inTax" />
+    </p>
     <p class="res">税込み価格：{{ inTax }}</p>
     <p class="res">消費税：{{ onlyTax }}</p>
-    <hr>
+    <hr />
     <h2>今は平成何年？</h2>
-    <p>今は<input type="number" v-model="nowYear">年</p>
-    <p>平成なら{{ heisei }}年 <input type="number" v-model="heisei">年</p>
+    <p>
+      今は
+      <input type="number" v-model="nowYear" />年
+    </p>
+    <p>
+      平成なら{{ heisei }}年
+      <input type="number" v-model="heisei" />年
+    </p>
     <p>ちなみに令和なら: {{ reiwa }}年</p>
 
-    <hr>
+    <hr />
     <h1>v-show</h1>
     <div>
       <button @click="active = !active">Toggle</button>
-      <p><span v-show="active">Show is display</span></p>
-      // v-if can use template
-      <p><template v-if="active">Show is dom controll</template></p>
+      <p>
+        <span v-show="active">Show is display</span>
+      </p>// v-if can use template
+      <p>
+        <template v-if="active">Show is dom controll</template>
+      </p>
     </div>
 
-    <hr>
+    <hr />
     <h1>if-else Reactive</h1>
     <div>
       <h2>今{{ time }}時</h2>
-        <p v-if="getTime() == 'morning' ">おはようザマス</p>
-        <p v-else-if="getTime() == 'afternoon' ">こんちくわ</p>
-        <p v-if="getTime() == 'evening' ">こんばんはー</p>
+      <p v-if="getTime() == 'morning' ">おはようザマス</p>
+      <p v-else-if="getTime() == 'afternoon' ">こんちくわ</p>
+      <p v-if="getTime() == 'evening' ">こんばんはー</p>
     </div>
-
   </div>
 </template>
 
@@ -62,7 +74,6 @@ export default {
     active: false,
     time: ((new Date()).getHours() + 0), // 時間取得 1桁数値
   }),
-
   methods: {
     getTime(){
       if(0 <= this.time & this.time < 12){
@@ -74,7 +85,7 @@ export default {
       }
     }
   },
-  //
+  //同期処理
   computed: { // 計算
     moreThanThree: function() {
       return this.counter >= 5 ? '5以上' : '5未満'
@@ -105,20 +116,38 @@ export default {
         return null
       }
     }
+  },
+  // 非同期処理
+  watch: {
+    counter(){
+      let vm = this
+      setTimeout(function(){
+        vm.counter = 0
+      }, 3000)
+    }
   }
 }
 </script>
 
 <style lang="stylus" scoped="scoped">
-input
-  font-size 24px
-h1
-  font-size 32px
-  color orange
-h2
-  font-size 18px
-.res
-  font-size 20px
-color
-  orange
+input {
+  font-size: 24px;
+}
+
+h1 {
+  font-size: 32px;
+  color: orange;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.res {
+  font-size: 20px;
+}
+
+color {
+  orange;
+}
 </style>
