@@ -1,5 +1,16 @@
 <template>
   <div id="">
+
+    <h1>Counter</h1>
+    <button @click="counter += 1">Counter</button>
+    <p>\{{ counter >= 5 ? '5以上' : '5未満' }\}</p>
+    <hr>
+    <p>課題： 計算式を直書きしてるので、これをComputedプロパティで表示する</p>
+    <p>{{ counter }}</p>
+    <p>{{ moreThanThree }}</p>
+    <p>{{ counter }}</p>
+    <hr>
+
     <h1>get / set</h1>
     <h2>消費税計算機</h2>
     <p>価格：
@@ -45,6 +56,7 @@
 export default {
   name: "",
   data: () => ({
+    counter: 0,
     price: 1000, // 初期化
     nowYear: 2020,
     active: false,
@@ -62,34 +74,37 @@ export default {
       }
     }
   },
-
+  //
   computed: { // 計算
-  inTax: { // 定義
-      get: function() {
-      return parseInt(this.price * 1.1)
+    moreThanThree: function() {
+      return this.counter >= 5 ? '5以上' : '5未満'
     },
-      set: function(v) {
-      this.price = Math.ceil(v / 1.1)
-    }
-  },
-  onlyTax() {
-    return Math.ceil(this.price * 0.1)
-  },
-  heisei: {
-      get: function() {
-      return this.nowYear - 1988
+    inTax: { // 定義
+        get: function() {
+        return parseInt(this.price * 1.1)
+      },
+        set: function(v) {
+        this.price = Math.ceil(v / 1.1)
+      }
     },
-      set: function(v) {
-      this.nowYear = v + 1988
+    onlyTax() {
+      return Math.ceil(this.price * 0.1)
+    },
+    heisei: {
+        get: function() {
+        return this.nowYear - 1988
+      },
+        set: function(v) {
+        this.nowYear = v + 1988
+      }
+    },
+    reiwa(){
+      if(this.nowYear >= 2018){
+        return this.nowYear - 2018
+      }else{
+        return null
+      }
     }
-  },
-  reiwa(){
-    if(this.nowYear >= 2018){
-      return this.nowYear - 2018
-    }else{
-      return null
-    }
-  }
   }
 }
 </script>
