@@ -48,6 +48,11 @@ const routes = [
     name: 'GetSet',
     component: () => import('../views/GetSet.vue')
   },
+  {
+    path: '/props',
+    name: 'Props',
+    component: () => import('../views/props-parent.vue')
+  },
 ]
 
 const router = new VueRouter({
