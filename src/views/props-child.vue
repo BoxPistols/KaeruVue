@@ -1,13 +1,13 @@
 <template>
   <div>
-    <p>PropsChild: {{ nums }}</p>
+    <p>PropsChild: {{ totalNumber }}</p>
   </div>
 </template>
 <script>
 
   export default {
     name: "",
-    props:[ "nums" ],
+    props:[ "totalNumber" ],
     data: () => ({
     }),
   }

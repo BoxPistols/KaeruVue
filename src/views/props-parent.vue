@@ -1,9 +1,17 @@
 <template>
   <div>
-    <h2>this nums {{ nums }}</h2>
-    <PropsChild nums="15" />
-    <PropsChild nums="10" />
-    <PropsChild :nums="nums" />
+    <h2>this nums {{ totalNumber }}</h2>
+
+    <div class="fx">
+      <PropsChild :totalNumber="15" />/ 固定
+    </div>
+    <div class="fx">
+      <PropsChild :total-number="totalNumber" />/ Data
+    </div>
+
+    <p>{{ halfCalc }}</p>
+
+    <button class="button" @click="increment">Increment</button>
   </div>
 </template>
 
@@ -13,12 +21,25 @@ import PropsChild from "./props-child";
 export default {
   name: "",
   data: () => ({
-    nums: 12
+    totalNumber: 12
   }),
+  computed: {
+    halfCalc(){
+      return parseInt(this.totalNumber / 2)
+    }
+  },
+  methods: {
+    increment(){
+      this.totalNumber += 1
+    }
+  },
   components:{
     PropsChild
-  }
+  },
 }
 </script>
-<style lang="scss" scoped="scoped">
+<style lang="stylus" scoped="scoped">
+.fx
+  display flex
+  align-items center
 </style>
