@@ -1,16 +1,11 @@
 <template>
   <div>
-<<<<<<< HEAD
     <p>PropsChild: {{ totalNumber }} | {{ textProps }}</p>
     <button @click="increment">MyIncrement</button>
-=======
-    <p>なむ {{ num }}</p>
->>>>>>> 23bb75c4760859fec8e38523952687eab1028017
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
 export default {
   name: "props-child",
   data() {
@@ -42,16 +37,4 @@ export default {
 </script>
 
 <style lang="scss" scoped="scoped">
-=======
-
-export default {
-  name: "",
-  props: ['num'],
-  data: () => ({
-  }),
-}
-</script>
-
-<style lang="sass" scoped>
->>>>>>> 23bb75c4760859fec8e38523952687eab1028017
 </style>
