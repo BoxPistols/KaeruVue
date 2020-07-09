@@ -1,20 +1,20 @@
 <template>
   <div>
-    <h2>this nums {{ totalNumber }}</h2>
+    <h2>this nums {{ totalNumber }} </h2>
 
     <div class="fx">
-      <PropsChild :totalNumber="15" />/ 固定
-    </div>
-    <div class="fx">
-      <PropsChild />/ デフォルト
-    </div>
-    <div class="fx">
-      <PropsChild :total-number="totalNumber" />/ Data
-    </div>
+      <!--<PropsChild :total-number="totalNumber" :text-props="textProps" @my-emit="totalNumber = $event"/>-->
 
+      <PropsChild :total-number="totalNumber" :text-props="`Hi`" @my-emit="incNum"/>
+    </div>
+    <!-- <div class="fx">
+      <PropsChild :text-props="`です`"/>/ デフォルト
+    </div>
+    <div class="fx">
+      <PropsChild :total-number="totalNumber" :text-props="ます"/>/ Data
+    </div> -->
     <p>{{ halfCalc }}</p>
-
-    <button class="button" @click="increment">Increment</button>
+    <!-- <button class="button" @click="increment">Increment</button> -->
   </div>
 </template>
 
@@ -22,9 +22,10 @@
 import PropsChild from "./props-child";
 
 export default {
-  name: "",
+  name: "props-parent",
   data: () => ({
-    totalNumber: 12
+    totalNumber: 0,
+    textProps: "テキスト"
   }),
   computed: {
     halfCalc(){
@@ -32,10 +33,15 @@ export default {
     }
   },
   methods: {
-    increment(){
-      this.totalNumber += 1
+    incNum(v){
+      this.totalNumber = v
     }
   },
+  // methods: {
+  //   increment(){
+  //     this.totalNumber += 1
+  //   }
+  // },
   components:{
     PropsChild
   },
