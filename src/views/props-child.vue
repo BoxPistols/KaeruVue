@@ -7,7 +7,16 @@
 
   export default {
     name: "",
-    props:[ "totalNumber" ],
+    props:{
+      totalNumber: {
+        type: Number,
+        default: 5,
+        /**
+         * 必須設定
+         * required: true
+         */
+      }
+    },
     data: () => ({
     }),
   }

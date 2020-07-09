@@ -6,6 +6,9 @@
       <PropsChild :totalNumber="15" />/ 固定
     </div>
     <div class="fx">
+      <PropsChild />/ デフォルト
+    </div>
+    <div class="fx">
       <PropsChild :total-number="totalNumber" />/ Data
     </div>
 
