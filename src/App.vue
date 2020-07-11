@@ -10,6 +10,7 @@
       <router-link to="/birthDay">BirthDay</router-link>
       <router-link to="/getSet">getSet</router-link>
       <router-link to="/props">Props</router-link>
+      <router-link to="/slot">slot</router-link>
     </div>
     <div class="contents">
       <router-view />

@@ -53,6 +53,11 @@ const routes = [
     name: 'Props',
     component: () => import('../views/props-parent.vue')
   },
+  {
+    path: '/slot',
+    name: 'slot',
+    component: () => import('../views/slot-parent.vue')
+  },
 ]
 
 const router = new VueRouter({
