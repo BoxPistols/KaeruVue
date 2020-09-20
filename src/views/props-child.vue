@@ -6,6 +6,7 @@
 
 <script>
 
+
 export default {
   name: "",
   props: ['num'],
@@ -15,4 +16,4 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-</style>
+</style>3
